@@ -39,7 +39,7 @@
             <div class="news">
                 {% get_latest_news 1 as news_list %}
                 {% for news in news_list %}
-                    <h2><a href="{{ news.get_absolute_url }}">{{ news.title|truncatewords_html:'5' }}</a></h2>
+                    <h2><a href="{{ news.get_absolute_url }}">{{ news.title|truncatewords:'5' }}</a></h2>
                     <p>
                         {% if news.teaser %}
                             {{ news.teaser|truncatewords:10 }}
