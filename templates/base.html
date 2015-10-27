@@ -49,7 +49,15 @@
                 {% get_latest_news 1 as news_list %}
                 {% for news in news_list %}
                     <h2><a href="{{ news.get_absolute_url }}">{{ news.title|truncatewords_html:'5' }}</a></h2>
-                    <p>{% firstof news.teaser|truncatewords_html:'10' news.content|truncatewords_html:"10" %} <a href="{{ news.get_absolute_url }}" title="{{ news.title }}">more</a></p>
+                    <p>
+                        {% if news.teaser %}
+                            {{ news.teaser|truncatewords:10 }}
+                        {% else %}
+                            {{ news.content|striptags|truncatewords:10 }}
+                        {% endif %}
+
+                        <a href="{{ news.get_absolute_url }}" title="{{ news.title }}">more</a>
+                    </p>
                     <h3><a href="{% url 'blanc_basic_news:post-list' %}">More News...</a></h3>
                 {% endfor %}
             </div>
