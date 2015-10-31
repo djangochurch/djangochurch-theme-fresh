@@ -78,6 +78,9 @@ body {
         overflow: hidden;
         width: @width;
         margin: 0 auto;
+        @media all and (max-width:760px) {
+            width: auto;
+        }
     }
     h1 {
         float: left;
@@ -156,6 +159,16 @@ body {
     #toggle-nav:checked ~ .menu-nav {
         display: block;
         opacity: 1;
+        li {
+            display: block;
+            clear: both;
+            border-top: .0625em solid #d4d4d4;
+            a {
+                line-height: 2.5em;
+                text-align: center;
+                &:after { display: none; }
+            }
+        }
     }
 }
 
