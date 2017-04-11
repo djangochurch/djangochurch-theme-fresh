@@ -66,6 +66,11 @@ body {
             margin: 1em 2.625em;
             padding: 1em 0;
         }
+        @media all and (max-width: 720px) {
+            margin: 0;
+
+            .wrap { padding-top: 0; }
+        }
     }
 }
 
@@ -87,7 +92,8 @@ body {
 .head {
     .wrap {
         overflow: hidden;
-        width: @width;
+        width: 100%;
+        max-width: @width;
         margin: 0 auto;
         @media all and (max-width:760px) {
             width: auto;
@@ -106,9 +112,20 @@ body {
             text-indent: -100em;
         }
     }
+
+    @media all and (max-width: 540px) {
+        h1 a {
+            width: 10rem;
+            height: 6rem;
+            background-size: contain;
+            background-position: left center;
+        }
+    }
 }
 
 .nav {
+    width: 100%;
+
     ul {
         margin: 0;
         padding: 0;
@@ -117,14 +134,13 @@ body {
     li {
         display: inline-block;
     }
-    a {
+    .menu-nav a {
         position: relative;
         display: block;
         float: left;
         line-height: 117px;
         padding: 0 0.5em;
         text-transform: uppercase;
-        font-size: 0.9em;
         color: @text-color;
         &.active, &:hover {
             color: @brand-color;
@@ -141,6 +157,19 @@ body {
             }
         }
         &.active:after { background: @brand-color; }
+    }
+
+    @media all and (max-width: 768px) {
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        align-items: center;
+
+        .toggle-nav { margin-left: auto; }
+
+        ul {
+            width: 100%;
+        }
     }
 }
 
@@ -161,8 +190,8 @@ body {
         line-height: 2.5em;
         text-transform: uppercase;
     }
-    #toggle-nav:checked + .toggle-nav:after{
-        display: none;
+    #toggle-nav:checked + .toggle-nav:after {
+        content: 'Close Menu';
     }
     .menu-nav {
         display: none;
@@ -208,6 +237,10 @@ body {
         width: 100%;
         height: auto;
         border-bottom: 0.1625em solid lighten(@text-color, 70%);
+    }
+
+    @media all and (max-width: 720px) {
+        padding-bottom: 1em;
     }
 }
 
@@ -296,11 +329,17 @@ body {
         color: lighten(@text-color, 30%);
     }
 
+    .news-events-footer {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+    }
+
     .events, .news {
-        display: table-cell;
         width: 50%;
         overflow: hidden;
         position: relative;
+        flex-shrink: 0;
         background: @brand-color;
         border-top: 0.0625em solid darken(@brand-color, 15%);
 
@@ -382,6 +421,7 @@ body {
     &.summary.image {
         img {
             display: block;
+            width: 100%;
             height: auto;
         }
     }
@@ -391,6 +431,11 @@ body {
             img {
                 display: block;
                 margin: -3em -2.625em 1em -2.625em;
+                width: calc(100% ~"+" 5.25em);
+                @media all and (max-width: 720px) {
+                    margin-left: -1em;
+                    width: calc(100% ~"+" 2em);
+                }
             }
         }
     }
@@ -448,6 +493,7 @@ body {
         li {
             margin-left: 4.625em;
             padding-bottom: 1em;
+            padding-right: 0.5em;
             border-top: 0.0625em solid lighten(@text-color, 70%);
             border-bottom: none;
             &:first-child { border-top: none; }
@@ -570,12 +616,16 @@ body {
     .foot ul li { margin-left: 0; }
 }
 
-@media all and (min-width:0) and (max-width: 320px) {
-    .nav {
-        font-size: 0.75em;
-    }
-    .content .events, .content .news {
-        width: auto;
-        display: block;
+@media all and (min-width:0) and (max-width: 460px) {
+    .content {
+        .events, .news {
+            width: 100%;
+            display: block;
+            width: 100%;
+        }
+        .news-events-footer {
+            display: block;
+            overflow: hidden;
+        }
     }
 }

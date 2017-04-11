@@ -1,12 +1,10 @@
 {% load page_tags %}
 
-<ul>
-    <input type="checkbox" id="toggle-nav" />
-    <label for="toggle-nav" class="toggle-nav" onclick></label>
-    <ul class="menu-nav">
-        {% get_root_pages current_page as root_pages %}
-        {% for page, page_active in root_pages %}
-            <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a></li>
-        {% endfor %}
-    </ul>
+<input type="checkbox" id="toggle-nav" />
+<label for="toggle-nav" class="toggle-nav" onclick></label>
+<ul class="menu-nav">
+    {% get_root_pages current_page as root_pages %}
+    {% for page, page_active in root_pages %}
+        <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a></li>
+    {% endfor %}
 </ul>

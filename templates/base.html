@@ -12,10 +12,10 @@
 <main class="page">
     <header class="head">
         <div class="wrap">
-            <h1><a href="/">{{ request.site.name }}</a></h1>
             <nav class="nav">
+                <h1><a href="/">{{ request.site.name }}</a></h1>
                 {% block nav %}
-                {% include "includes/nav.html" only %}
+                    {% include "includes/nav.html" only %}
                 {% endblock nav %}
             </nav>
         </div>
